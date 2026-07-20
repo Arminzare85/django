@@ -12,8 +12,10 @@ class Post(models.Model):
     published_date =models.DateTimeField(null = True)
     created_time = models.DateTimeField(auto_now_add=True)
     updated_time = models.DateTimeField(auto_now=True)
+    class Meta:
+        ordering =['-status']
 
     def __str__(self):
-        return "{} - {}".format(self.title , self.id)
+        return "{} - {}".format(self.title , self.id) 
 
 
