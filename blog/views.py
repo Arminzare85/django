@@ -9,17 +9,13 @@ def blog_view(request):
     context = {'posts': posts}
     return render(request ,'blog/blog-home.html',context)
 
-def blog_single(request):
-    return render(request ,'blog/blog-single.html')
-def test(request , pid):
-    posts = get_object_or_404(
-        Post,
-        id=pid,
-        published_date__lte=timezone.now()
-    )
-    posts.counted_view += 1
-    posts.save()
-
+def blog_single(request , pid):
+    posts = Post.objects.filter(status =1)
+    post = get_object_or_404( posts , id = pid)
+    context = {'posts': posts}
+    return render(request ,'blog/blog-single.html' , context)
+def test(request,pid ):
+    posts = get_object_or_404( Post ,id = pid)
     context = {'posts': posts}
     return render(request , 'test.html' , context)
 
