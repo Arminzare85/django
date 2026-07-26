@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %}{% block content %}
+{% extends "base.html" %} {% load static %}{% load blog_tag %}{% block content %}
 <section class="banner-area relative blog-home-banner" id="home">
     <div class="overlay overlay-bg"></div>
     <div class="container">
@@ -105,7 +105,7 @@
                             <h3>{{post.title}}</h3>
                         </a>
                         <p class="excert">
-                           {{post.content|truncatewords:30}}
+                           {{post.content|snippet:150}}
                         </p>
                         <a href="{% url 'blog:single' post.id %}" class="primary-btn">View More</a>
                     </div>
@@ -143,10 +143,10 @@
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
-                    {% include 'blog/blog-writer.html' %}
-                    {% include 'blog/blog-popular.html' %}
-                    {% include 'blog/blog-ads.html' %}
-                    {% include 'blog/blog-category.html' %}
+                    {% writer %}
+                    {% popularposts %}
+                    {% ads %}
+                    {% category %}
                     
                     <div class="single-sidebar-widget newsletter-widget">
                         <h4 class="newsletter-title">Newsletter</h4>
