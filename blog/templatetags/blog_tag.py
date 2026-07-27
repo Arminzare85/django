@@ -28,3 +28,7 @@ def category():
     for name in categories:
         cat_dict[name]=posts.filter(category=name).count()
     return {"categories":cat_dict}
+
+@register.inclusion_tag("blog/blog-search.html")
+def search():
+        return {}
