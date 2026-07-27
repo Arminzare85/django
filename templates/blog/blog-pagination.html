@@ -1,0 +1,25 @@
+{% load static %}{% load blog_tag %}
+<nav class="blog-pagination justify-content-center d-flex">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a href="#" class="page-link" aria-label="Previous">
+                                <span aria-hidden="true">
+		                                        <span class="lnr lnr-chevron-left"></span>
+                                </span>
+                            </a>
+                        </li>
+                        {% for page in posts.paginator.page_range %}
+    <li class="page-item {% if posts.number == page %}active{% endif %}">
+        <a href="{% url 'blog:num_page' page %}" class="page-link">
+            {{ page }}
+        </a>
+    </li>
+{% endfor %}
+                            <a href="#" class="page-link" aria-label="Next">
+                                <span aria-hidden="true">
+		                                        <span class="lnr lnr-chevron-right"></span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>

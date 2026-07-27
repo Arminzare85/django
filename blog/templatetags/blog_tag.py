@@ -32,3 +32,8 @@ def category():
 @register.inclusion_tag("blog/blog-search.html")
 def search():
         return {}
+@register.inclusion_tag("blog/blog-pagination.html", takes_context=True)
+def pagination(context):
+    return {
+        "posts": context["posts"]
+    }
