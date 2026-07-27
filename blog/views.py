@@ -4,16 +4,19 @@ from django.http import HttpResponse,JsonResponse
 from blog.models import Post
 from django.utils import timezone
 
-def blog_view(request,cat_name=None):
+def blog_view(request,cat_name=None,author_username=None):
     posts = Post.objects.filter(
     status=True,
     published_date__lte=timezone.now()
 )
+    
     if cat_name:
         posts = posts.filter(category__name=cat_name)
+    if author_username:
+        posts = posts.filter(author__username=author_username)        
     context = {'posts': posts}
+    print(author_username)
     return render(request ,'blog/blog-home.html',context)
-
 def blog_single(request , pid):
     posts = list(Post.objects.filter(status =1))
 
@@ -43,6 +46,7 @@ def blog_category(request,cat_name):
     posts=posts.filter(category__name=cat_name)
     context = {'posts': posts}
     return render(request ,'blog/blog-home.html' , context)
+
 
 
 
