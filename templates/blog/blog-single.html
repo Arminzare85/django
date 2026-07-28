@@ -246,6 +246,13 @@
             </div>
     </div>
 </section>
+{% if messages %}
+    {% for message in messages %}
+        <script>
+            alert("{{ message }}");
+        </script>
+    {% endfor %}
+{% endif %}
 <!-- End post-content Area -->
 
 <!-- start footer Area -->{% endblock %}

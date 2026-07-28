@@ -1,8 +1,9 @@
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse,JsonResponse
 from blog.models import Post 
 from blog.forms import CommentForm 
+from django.contrib import messages
 
 from django.utils import timezone
 from django.core.paginator import Paginator , EmptyPage , PageNotAnInteger
@@ -36,6 +37,8 @@ def blog_single(request , pid):
         comment = form.save(commit=False)
         comment.post = post
         comment.save()
+        messages.success(request, "successfully posted")
+        return redirect('blog:single', pid=post.id)
     post.counted_view += 1
     post.save()
     post_index = posts.index(post)
