@@ -37,3 +37,9 @@ def pagination(context):
     return {
         "posts": context["posts"]
     }
+
+@register.inclusion_tag("blog/blog-comment.html")
+def comment():
+    # posts = Post.objects.filter(status=1).order_by("published_date")
+    # return {"posts":posts}
+    return {}

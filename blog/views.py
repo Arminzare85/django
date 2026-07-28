@@ -1,7 +1,9 @@
 
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse,JsonResponse
-from blog.models import Post
+from blog.models import Post 
+from blog.forms import CommentForm 
+
 from django.utils import timezone
 from django.core.paginator import Paginator , EmptyPage , PageNotAnInteger
 
@@ -25,7 +27,15 @@ def blog_view(request,cat_name=None,author_username=None,page_num=1):
 def blog_single(request , pid):
     posts = list(Post.objects.filter(status =1))
 
-    post = get_object_or_404( Post , id = pid ,published_date__lte=timezone.now())
+    post = get_object_or_404( Post , id = pid ,published_date__lte=timezone.now()) 
+    form = CommentForm()
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.post = post
+        comment.save()
     post.counted_view += 1
     post.save()
     post_index = posts.index(post)
@@ -39,7 +49,8 @@ def blog_single(request , pid):
         next_post = None
     context = {'post': post,
                'previous_post': previous_post ,
-               'next_post': next_post 
+               'next_post': next_post ,
+               "form": form,
                }
     return render(request ,'blog/blog-single.html' , context)
 # def test(request,pid ):

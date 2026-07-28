@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import Post , Category
+from blog.models import Post , Category , Comment
 # Register your models here.
 class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'published_date'
@@ -10,3 +10,4 @@ class PostAdmin(admin.ModelAdmin):
     
 admin.site.register(Category)
 admin.site.register(Post ,PostAdmin)
+admin.site.register(Comment)
