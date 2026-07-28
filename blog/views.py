@@ -36,6 +36,7 @@ def blog_single(request , pid):
     if form.is_valid():
         comment = form.save(commit=False)
         comment.post = post
+        comment.name = "unknown"
         comment.save()
         messages.success(request, "successfully posted")
         return redirect('blog:single', pid=post.id)
