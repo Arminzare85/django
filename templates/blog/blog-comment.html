@@ -63,8 +63,7 @@
 
 <div class="comments-area">
     {% csrf_token %}
-  
-                    <h4>05 Comments</h4>
+                    <h4>{{comments.count}} Comments</h4>
                     {%  for comment in comments %}
                     <div class="comment-list">
                         <div class="single-comment justify-content-between d-flex">
@@ -80,9 +79,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="reply-btn">
-                                <a href="" class="btn-reply text-uppercase">reply</a>
-                            </div>
+                            
                         </div>
                     </div>
                     {%endfor%}
