@@ -1,4 +1,5 @@
 {% load static %}
+{% load blog_tag %}
 <div class="comment-form">
   <h4>Leave a Comment</h4>
   <form method="POST">
@@ -58,3 +59,31 @@
     </button>
   </form>
 </div>
+
+
+<div class="comments-area">
+    {% csrf_token %}
+  
+                    <h4>05 Comments</h4>
+                    {%  for comment in comments %}
+                    <div class="comment-list">
+                        <div class="single-comment justify-content-between d-flex">
+                            <div class="user justify-content-between d-flex">
+                                <!-- <div class="thumb">
+                                    <img src="{% static 'img/blog/c1.jpg' %}" alt="">
+                                </div> -->
+                                <div class="desc">
+                                    <h5><a href="#">{{comment.name}}</a></h5>
+                                    <p class="date">{{comment.created_time|date:"D d M Y"}} at {{comment.created_time|date:"H:i"}} pm </p>
+                                    <p class="comment">
+                                        {{comment.message|slice:":100"}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="reply-btn">
+                                <a href="" class="btn-reply text-uppercase">reply</a>
+                            </div>
+                        </div>
+                    </div>
+                    {%endfor%}
+                </div>  

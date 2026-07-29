@@ -1,5 +1,6 @@
 from django import template
-from blog.models import Post , Category
+from blog.models import Post , Category ,Comment
+
 
 register = template.Library()
 
@@ -39,7 +40,9 @@ def pagination(context):
     }
 
 @register.inclusion_tag("blog/blog-comment.html")
-def comment():
-    # posts = Post.objects.filter(status=1).order_by("published_date")
-    # return {"posts":posts}
-    return {}
+
+def comments(post_id):
+    comments = Comment.objects.filter(post_id=post_id)
+    return {
+        "comments": comments
+    }
