@@ -4,10 +4,10 @@ from django.http import HttpResponse,JsonResponse
 from blog.models import Post 
 from blog.forms import CommentForm 
 from django.contrib import messages
-
+from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.core.paginator import Paginator , EmptyPage , PageNotAnInteger
-
+@login_required
 def blog_view(request,cat_name=None,author_username=None,page_num=1):
     posts = Post.objects.filter(
     status=True,
