@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.core.paginator import Paginator , EmptyPage , PageNotAnInteger
+from django.contrib.auth.forms import PasswordResetForm
 @login_required
 def blog_view(request,cat_name=None,author_username=None,page_num=1):
     posts = Post.objects.filter(

@@ -193,9 +193,9 @@
     {% for message in messages %}
     <script>
         Swal.fire({
-            icon: 'success',
-            title: 'SUCCESS',
-            text: '{{ message }}'
+            icon: "{{ message.tags }}",
+            title: "{{ message.tags|upper }}",
+            text: "{{ message }}"
         });
     </script>
     {% endfor %}

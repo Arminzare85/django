@@ -39,8 +39,8 @@
                 <div class="divider">یا</div>
 
                 <div class="guest-section">
-                    <p>کاربر جدید هستید؟</p>
-                    <button class="btn-secondary" onclick="loginAsGuest()">ورود به صورت مهمان</button>
+                    
+                    <a class="btn-secondary " href="{% url 'accounts:password_reset_form' %}" >فراموشی رمز عبور</a>
                 </div>
 
                 <div id="errorMessage" class="error-message"></div>
@@ -49,56 +49,7 @@
     </div>
 
     <!-- Dashboard Screen -->
-    <div id="dashboardScreen" class="screen">
-        <nav class="navbar">
-            <div class="navbar-content">
-                <h2>داشبورد</h2>
-                <button class="btn-logout" onclick="logout()">خروج</button>
-            </div>
-        </nav>
-
-        <div class="dashboard-container">
-            <div class="welcome-card">
-                <h1>سلام <span id="userDisplay">کاربر</span>! 👋</h1>
-                <p>خوش آمدید به داشبورد شما</p>
-            </div>
-
-            <div class="cards-grid">
-                <div class="card">
-                    <div class="card-icon">📊</div>
-                    <h3>آمار</h3>
-                    <p>مشاهده آمار و گزارش‌های خود</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">⚙️</div>
-                    <h3>تنظیمات</h3>
-                    <p>مدیریت تنظیمات حساب</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">📁</div>
-                    <h3>فایل‌ها</h3>
-                    <p>دسترسی به فایل‌های شما</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">👥</div>
-                    <h3>پروفایل</h3>
-                    <p>ویرایش اطلاعات پروفایل</p>
-                </div>
-            </div>
-
-            <div class="user-info">
-                <h3>اطلاعات حساب</h3>
-                <div class="info-box">
-                    <p><strong>نام کاربری:</strong> <span id="userInfo">-</span></p>
-                    <p><strong>نوع حساب:</strong> <span id="accountType">-</span></p>
-                    <p><strong>تاریخ ورود:</strong> <span id="loginTime">-</span></p>
-                </div>
-            </div>
-        </div>
-    </div>
+ 
 
     <!-- <script>
         // ==================== LOGIN SYSTEM ====================
